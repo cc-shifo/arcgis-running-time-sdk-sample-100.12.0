@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Distance Measurement Analysis</string>
+    <string name="total_distance">Total Distance:</string>
+    <string name="horizontal_distance">Horizontal Distance:</string>
+    <string name="vertical_distance">Vertical Distance:</string>
+    <string name="units">Units:</string>
+</resources>
