@@ -1,0 +1,1 @@
+# arcgis-running-time-sdk-sample-100.12.0
