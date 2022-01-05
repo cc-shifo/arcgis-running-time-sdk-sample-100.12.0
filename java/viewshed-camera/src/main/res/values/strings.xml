@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Viewshed Camera</string>
+    <string name="update_from_camera">Update from camera</string>
+</resources>

@@ -1,0 +1,62 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: '../version.gradle'
+
+buildscript {
+    apply from: '../version.gradle'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradleVersion"
+    }
+}
+
+allprojects {
+
+    final def var = repositories {
+        google()
+        jcenter()
+        maven { url 'https://esri.jfrog.io/artifactory/arcgis' }
+    }
+    var
+}
+
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty("dependencies")) {
+            dependencies {
+                implementation "androidx.appcompat:appcompat:$appcompatVersion"
+                implementation "com.google.android.material:material:$materialVersion"
+                implementation "com.esri.arcgisruntime:arcgis-android:$arcgisVersion"
+//                implementation "com.esri.arcgisruntime:arcgis-android:100.6.0"
+                implementation "androidx.multidex:multidex:$multidexVersion"
+            }
+        }
+        project.android {
+            compileOptions {
+                sourceCompatibility rootProject.ext.javaVersion
+                targetCompatibility rootProject.ext.javaVersion
+            }
+            defaultConfig {
+                multiDexEnabled true
+            }
+            packagingOptions {
+                exclude 'META-INF/DEPENDENCIES'
+            }
+        }
+    }
+}
+
+//task apiKey {
+//    def apiKeyFile = new File("${System.properties.getProperty("user.home")}/.gradle/gradle.properties")
+////    if (!apiKeyFile.exists()) {
+////        print("Go to " + new URL("https://developers.arcgis.com/dashboard/") + " to get an API key.")
+////        print("Add your API Key to ${System.properties.getProperty("user.home")}\\.gradle\\gradle.properties.")
+////        String apiKeyFileContents = "API_KEY = "
+////        apiKeyFile.write(apiKeyFileContents)
+////    }
+//    String apiKeyFileContents = "API_KEY = " +
+//            "\"AAPK0a853ae25fd84076be0747053b694d80FnNYUzZ8C8E98hTieGnlD2d34qPYYjPxT6Y8kzGXhUtu2Y6klBE4b6a3iyj2uSOc\""
+//    apiKeyFile.write(apiKeyFileContents)
+//}
