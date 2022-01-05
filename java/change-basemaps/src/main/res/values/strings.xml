@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Change Basemaps</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <string-array name="basemap_types">
+        <item>Streets</item>
+        <item>Navigation</item>
+        <item>Topographic</item>
+        <item>Terrain</item>
+        <item>Gray Canvas</item>
+        <item>OSM Gray Canvas</item>
+    </string-array>
+
+</resources>
