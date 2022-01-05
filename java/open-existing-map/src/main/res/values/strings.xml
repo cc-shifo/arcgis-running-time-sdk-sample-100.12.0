@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Open Existing map</string>
+
+    <!-- navigation drawer items -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="navbar_title">Open a map</string>
+    
+    <!-- arcgis online portal url -->
+    <string name="portal_url">https://www.arcgis.com/</string>
+    <!-- webmap titles -->
+    <string name="webmap_hurricanes_cyclones_typhoons">Hurricanes, Cyclones and Typhoons</string>
+    <string name="webmap_terrestrial_ecosystems">Terrestrial Ecosystems of the World </string>
+    <string name="webmap_geology_us">Geology of United States</string>
+</resources>
