@@ -19,8 +19,13 @@ package com.esri.arcgisruntime.sample.arcgismapimagelayerurl;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.esri.arcgisruntime.geometry.Point;
+import com.esri.arcgisruntime.geometry.SpatialReferences;
 import com.esri.arcgisruntime.layers.ArcGISMapImageLayer;
 import com.esri.arcgisruntime.mapping.ArcGISMap;
+import com.esri.arcgisruntime.mapping.Viewpoint;
+import com.esri.arcgisruntime.mapping.view.Camera;
 import com.esri.arcgisruntime.mapping.view.MapView;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     map.getOperationalLayers().add(mapImageLayer);
     // set the map to be displayed in this view
     mMapView.setMap(map);
+    mMapView.setViewpoint(new Viewpoint(new Point(114.398683, 30.457091,
+            SpatialReferences.getWgs84()), 10));
   }
 
   @Override

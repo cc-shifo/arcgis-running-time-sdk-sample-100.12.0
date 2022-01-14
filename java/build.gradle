@@ -31,6 +31,7 @@ subprojects {
                 implementation "com.esri.arcgisruntime:arcgis-android:$arcgisVersion"
 //                implementation "com.esri.arcgisruntime:arcgis-android:100.6.0"
                 implementation "androidx.multidex:multidex:$multidexVersion"
+                implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
             }
         }
         project.android {
@@ -43,6 +44,10 @@ subprojects {
             }
             packagingOptions {
                 exclude 'META-INF/DEPENDENCIES'
+            }
+
+            buildFeatures {
+                dataBinding true
             }
         }
     }

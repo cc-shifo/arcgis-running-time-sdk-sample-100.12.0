@@ -1,0 +1,4 @@
+include ':app'
+
+rootProject.name = "Add a feature layer"
+
