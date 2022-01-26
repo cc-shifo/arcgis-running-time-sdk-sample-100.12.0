@@ -23,6 +23,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.esri.arcgisruntime.ArcGISRuntimeEnvironment;
 import com.esri.arcgisruntime.layers.KmlLayer;
@@ -31,9 +32,14 @@ import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.BasemapStyle;
 import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.MapView;
+import com.esri.arcgisruntime.ogc.kml.KmlContainer;
 import com.esri.arcgisruntime.ogc.kml.KmlDataset;
+import com.esri.arcgisruntime.ogc.kml.KmlNode;
+import com.esri.arcgisruntime.ogc.kml.KmlPlacemark;
 import com.esri.arcgisruntime.portal.Portal;
 import com.esri.arcgisruntime.portal.PortalItem;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -86,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
     // a KML layer created from a remote KML file
     KmlLayer kmlLayer = new KmlLayer(kmlDataset);
-    display(kmlLayer);
+    // display(kmlLayer);
 
     // report errors if failed to load
     kmlDataset.addDoneLoadingListener(() -> {
@@ -94,6 +100,14 @@ public class MainActivity extends AppCompatActivity {
         String error = "Failed to load kml layer from URL: " + kmlDataset.getLoadError().getMessage();
         Toast.makeText(this, error, Toast.LENGTH_LONG).show();
         Log.e(TAG, error);
+      }
+
+      if (kmlDataset.getLoadStatus() == LoadStatus.LOADED) {
+        List<KmlNode> listNodes = kmlDataset.getRootNodes();
+        getPlacemarkList(listNodes);
+        Log.e("mainActivity", "error: " + kmlDataset.getLoadStatus().toString());
+      } else {
+        Log.e("mainActivity", "error: " + kmlDataset.getLoadStatus().toString());
       }
     });
   }
@@ -141,7 +155,29 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, error, Toast.LENGTH_LONG).show();
         Log.e(TAG, error);
       }
+
+
+      if (kmlDataset.getLoadStatus() == LoadStatus.LOADED) {
+        List<KmlNode> listNodes = kmlDataset.getRootNodes();
+        getPlacemarkList(listNodes);
+        Log.e("mainActivity", "error: " + kmlDataset.getLoadStatus().toString());
+      } else {
+        Log.e("mainActivity", "error: " + kmlDataset.getLoadStatus().toString());
+      }
     });
+  }
+
+  private void getPlacemarkList(@NonNull List<KmlNode> listNodes) {
+    for (KmlNode node : listNodes) {
+      if (node instanceof KmlPlacemark) {
+        // TODO
+      } else if (node instanceof KmlContainer) {
+        List<KmlNode> childNodes = ((KmlContainer) node).getChildNodes();
+        if (!childNodes.isEmpty()) {
+          getPlacemarkList(childNodes);
+        }
+      }
+    }
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
