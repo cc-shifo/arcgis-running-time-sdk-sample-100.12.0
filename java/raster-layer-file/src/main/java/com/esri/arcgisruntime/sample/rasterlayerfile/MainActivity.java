@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
     // retrieve the MapView from layout
     mMapView = findViewById(R.id.mapView);
+
+    // download raster-file zip and unzip
+    // adb push raster-file /Android/data/com.esri.arcgisruntime.sample.rasterlayerfile/files/raster-file
     // create a raster from a local raster file
     Raster raster = new Raster(getExternalFilesDir(null) + getString(R.string.shasta_tif));
     // create a raster layer
