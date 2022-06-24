@@ -1,0 +1,22 @@
+RasterLayer（栅格类栅格层）
+功能：本地加载tif，tif要求有配置文件。
+demo：https://developers.arcgis.com/android/java/sample-code/raster-layer-file/
+
+ImageServiceRaster（栅格类栅格服务）
+功能：访问ArcGIS发布的影像服务。
+demo：ImageServiceRaster provides access to a raster that is retrieved from an ArcGIS image service.
+
+
+
+ArcGISMapImageLayer（ArcGIS地图图片服务）
+功能：访问ArcGIS发布的地图图片服务
+https://developers.arcgis.com/android/java/sample-code/arcgis-map-image-layer-url/
+
+瓦片类
+WebTiledLayer
+功能：
+一种将非 ArcGIS 服务集成为地图中的图层的简单方法。
+要求：
+1、URL 模板通常遵循类似于 的模式https://{subDomain}.server.org/path/{level}/{col}/{row}.png
+2、如果TileInfo未指定，则假定切片采用 OpenStreetMap 切片方案，256x256 PNG 切片，96 DPI，WebMercator 投影，FullExtent 为 [-180, -85.0511, 180, 85.051]。
+
